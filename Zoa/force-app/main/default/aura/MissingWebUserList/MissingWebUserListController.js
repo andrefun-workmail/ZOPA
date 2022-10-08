@@ -45,7 +45,9 @@
 
     handleClick: function(cmp,event,helper){ 
         //calling the "Web_User__c" creator method within apex controller
-        var action = cmp.get("c.webUserCreator");	
+        var action = cmp.get("c.webUserCreator");
+	    
+	//setting "webUsers" containing variable as parameter for the controller method
         action.setParams({ webUsers : JSON.stringify(cmp.get("v.data")) });
 		action.setCallback(this, function(response) {
         if (response.getState() === "SUCCESS"){
@@ -80,7 +82,7 @@
             toastEvent.setParams({
                 "title": "Error",
                 "type": "error",
-                "message": "Something went wrong with the call to the external service, please contact support team. Error message: \"" + response.getError()[0].message+"\""
+                "message": "Something went wrong inserting records in the system, please contact support team. Error message: \"" + response.getError()[0].message+"\""
             });
             toastEvent.fire();
         }
