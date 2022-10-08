@@ -24,7 +24,7 @@ public with sharing class MissingWebUserListCtrl {
                     usrsWrap = (List<usersWrapper>)JSON.deserialize(response.getBody(), List<usersWrapper>.class);
                 
                 }
-
+                
                 //return the user list in a format that can match the datatable of the component
                 return userDataTablePopulator(usrsWrap);
             } catch (Exception e) {
@@ -102,7 +102,7 @@ public with sharing class MissingWebUserListCtrl {
             //returning a variable containing both exsiting and new "Web_User__c" ids
             usrResp.insertedUsersList = insertedUsrsId;
             usrResp.excludedUsers = existingWebIds;
-
+    
             return usrResp;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
@@ -110,53 +110,35 @@ public with sharing class MissingWebUserListCtrl {
     }
 
     public class usersWrapper{
-        @AuraEnabled
-        public String id  {get;set;}
-        @AuraEnabled
-        public String name {get;set;}
-        @AuraEnabled
-        public String username {get;set;}
-        @AuraEnabled
-        public String email {get;set;}
-        @AuraEnabled
-        public userAddres address {get;set;}
-        @AuraEnabled
-        public String phone {get;set;}
-        @AuraEnabled
-        public String website {get;set;}
-        @AuraEnabled
-        public userCompany company {get;set;}
+        public String id;
+        public String name;
+        public String username;
+        public String email;
+        public userAddres address;
+        public String phone;
+        public String website;
+        public userCompany company;
         
     }
 
     public class userAddres{
-        @AuraEnabled
-        public String street {get;set;}
-        @AuraEnabled
-        public String suite {get;set;}
-        @AuraEnabled
-        public String city {get;set;}
-        @AuraEnabled
-        public String zipcode {get;set;} 
-        @AuraEnabled
-        public userGeo geo {get;set;}
+        public String street;
+        public String suite;
+        public String city;
+        public String zipcode;
+        public userGeo geo;
 
     }
 
     public class userGeo{
-        @AuraEnabled
-        public String lat {get;set;}
-        @AuraEnabled
-        public String lng {get;set;}
+        public String lat;
+        public String lng;
     }
 
     public class userCompany{
-        @AuraEnabled
-        public String name {get;set;}
-        @AuraEnabled
-        public String catchPhrase {get;set;}
-        @AuraEnabled
-        public String bs {get;set;}
+        public String name;
+        public String catchPhrase;
+        public String bs;
     }
 
     public class userDataTable{
