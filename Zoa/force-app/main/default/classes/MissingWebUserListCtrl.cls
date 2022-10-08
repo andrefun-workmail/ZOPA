@@ -89,7 +89,7 @@ public with sharing class MissingWebUserListCtrl {
             Set<String> insertedUsrsId = new Set<String>();
 
             //deserialize JSON of data contained within the table, passed through the component JS, to build "userDataTable" records
-            List<userDataTable> usrsDataTable = ( List<userDataTable> )JSON.deserialize(webUsers,  List<userDataTable> .class);
+            List<userDataTable> usrsDataTable = ( List<userDataTable> )JSON.deserialize(webUsers,  List<userDataTable>.class);
 
             //storing Ids of existing "Web_User__c" inside "existingWebIds" to avoid duplicates
             for(Web_User__c existingWebUser :  [SELECT Web_Site_Id__c FROM Web_User__c]){
