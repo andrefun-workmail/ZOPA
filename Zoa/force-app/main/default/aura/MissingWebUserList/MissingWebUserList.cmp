@@ -1,0 +1,23 @@
+<!--
+ - Created by jesus.cantero on 13/05/2021.
+ -->
+
+<aura:component description="MissingWebUserList" implements="force:appHostable" controller="MissingWebUserListCtrl">
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+    <lightning:card title="Missing User to Import">
+        <aura:set attribute="actions">
+            <lightning:button label="Import Missing Record" onclick="{!c.handleClick}"/>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            <lightning:datatable
+                    keyField="id"
+                    data="{! v.data }"
+                    columns="{! v.columns }"
+                    hideCheckboxColumn="true"/>
+        </p>
+    </lightning:card>
+</aura:component>
